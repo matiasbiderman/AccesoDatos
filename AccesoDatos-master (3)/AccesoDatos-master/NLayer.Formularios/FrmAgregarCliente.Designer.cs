@@ -57,7 +57,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 2;
-            this.textBox3.Text = "Edad";
+            this.textBox3.Text = "Direccion";
             // 
             // button1
             // 

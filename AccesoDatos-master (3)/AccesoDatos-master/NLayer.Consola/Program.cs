@@ -26,7 +26,6 @@ namespace NLayer.Consola
                 {
                     Console.WriteLine(c);
                 }
-
             }
             catch (Exception ex)
             {

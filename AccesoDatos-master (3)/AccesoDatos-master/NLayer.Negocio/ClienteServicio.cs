@@ -31,9 +31,19 @@ namespace NLayer.Negocio
                     cli = c;
             }
             return cli;
-            
         }
+        internal bool Existe(int idCliente)
+        {
+            List<Cliente> lst = TraerClientes();
 
+            foreach (Cliente c in lst)
+            {
+                if (c.Id == idCliente)
+                    return true;
+            }
+
+            return false;
+        }
         public int InsertarCliente(string nombre, string apellido, string direccion)
         {
             // antes validar con el get si existe ese dni/apellido-nombre
@@ -58,8 +68,6 @@ namespace NLayer.Negocio
             //return TraerClientesPorId(resultante.Id);
             else
                 throw new Exception("Hubo un error en la petición al servidor. Detalle: " + resultante.Error);
-            
-            
         }
     }
 }

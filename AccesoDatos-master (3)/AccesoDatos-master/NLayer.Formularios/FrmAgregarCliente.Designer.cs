@@ -90,7 +90,9 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Name = "FrmAgregarCliente";
-            this.Text = "FrmAgregarCliente";
+            this.Text = "Nuevo Cliente";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAgregarCliente_FormClosed);
+            this.Load += new System.EventHandler(this.FrmAgregarCliente_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

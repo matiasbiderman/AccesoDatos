@@ -38,5 +38,15 @@ namespace NLayer.Formularios
             textBox2.Text = string.Empty;
             textBox3.Text = string.Empty;
         }
+
+        private void FrmAgregarCliente_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Owner.Show();
+        }
+
+        private void FrmAgregarCliente_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

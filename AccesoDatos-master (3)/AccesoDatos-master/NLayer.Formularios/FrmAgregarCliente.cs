@@ -31,14 +31,25 @@ namespace NLayer.Formularios
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string nombre = textBox1.Text;
-            string apellido = textBox2.Text;
-            string direccion = textBox3.Text;
-            _clienteServicio.InsertarCliente(nombre,apellido,direccion);
-            MessageBox.Show("Cliente agregado con exito");
-            textBox1.Text = string.Empty; 
-            textBox2.Text = string.Empty;
-            textBox3.Text = string.Empty;
+            try
+            {
+                string nombre = textBox1.Text;
+                string apellido = textBox2.Text;
+                string direccion = textBox3.Text;
+                _clienteServicio.InsertarCliente(nombre, apellido, direccion);
+                MessageBox.Show("Cliente agregado con exito");
+                textBox1.Text = string.Empty;
+                textBox2.Text = string.Empty;
+                textBox3.Text = string.Empty;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                textBox1.Text = string.Empty;
+                textBox2.Text = string.Empty;
+                textBox3.Text = string.Empty;
+            }
+           
         }
 
         private void FrmAgregarCliente_FormClosed(object sender, FormClosedEventArgs e)

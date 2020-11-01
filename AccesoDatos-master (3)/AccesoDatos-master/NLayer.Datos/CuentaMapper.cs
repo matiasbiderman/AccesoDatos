@@ -16,12 +16,12 @@ namespace NLayer.Datos
             string json2 = WebHelper.Get("/cuenta");
             return MapList(json2);
         }
-        public Cuenta Traer(int idCliente)
+        /*public Cuenta Traer(int idCliente)
         {
-            string json2 = WebHelper.Get("/api/v1/cuenta/" + idCliente.ToString()); // trae un texto en formato json de una web
+            string json2 = WebHelper.Get("/cuenta/" + idCliente.ToString()); // trae un texto en formato json de una web
             Cuenta resultado = Map(json2);
             return resultado;
-        }
+        }*/
         private Cuenta Map(string json2)
         {
             Cuenta lst = JsonConvert.DeserializeObject<Cuenta>(json2);
@@ -36,7 +36,7 @@ namespace NLayer.Datos
         {
             NameValueCollection obj = ReverseMap(cuenta);
 
-            string result = WebHelper.Post("/api/v1/cuenta", obj);
+            string result = WebHelper.Post("/cuenta", obj);
 
             TransactionResult resultadoTransaccion = MapResultado(result);
 

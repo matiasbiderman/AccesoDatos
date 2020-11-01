@@ -22,11 +22,11 @@ namespace NLayer.Negocio
         {
             return mapper.TraerCuentas();
         }
-        public Cuenta Traer(int idCliente)
+       /* public Cuenta Traer(int idCliente)
         {
             Cuenta result = mapper.Traer(idCliente);
             return result;
-        }
+        }*/
         public void IngresarCuenta(Cuenta cuenta)
         {
             if (!ExisteLaCuenta(cuenta))
@@ -44,18 +44,39 @@ namespace NLayer.Negocio
                 throw new CuentaExistenteException(cuenta.Id);
             }
         }
-        public void ModificarSaldo(int saldo, int idcliente)
+        public void ModificarSaldo(int saldo, int idcuenta)
         {
-            if (saldo > 0)
-            {
-                
-                Traer(idcliente).Saldo = saldo;
+            Cuenta c = new Cuenta();
+            c.Id = idcuenta;
+            c.Saldo = saldo;
 
+            if (c.Saldo < 0)
+                throw new Exception("El saldo debe ser mayor a 0.");
+
+            if (c.Id <= 0)
+                throw new Exception("Debe ser un id de cuenta valido.");
+
+            TransactionResult t = mapper.Update(c);
+
+            if (!t.IsOk)
+            {
+                throw new Exception("Error al modificar el saldo de la cuenta. " + t.Error);
+            }
+            //List<Cuenta> c = TraerCuentas();
+            /*if (saldo > 0)
+            {
+                foreach (Cuenta cuenta in c)
+                {
+                    if(cuenta.Id == idcliente)
+                    {
+                        cuenta.Saldo = saldo;
+                    }
+                } 
             }
             else
             {
                 throw new Exception("el saldo es negativo");
-            }
+            }*/
         }
 
         /*public Cuenta AbrirCuenta(string descripcion, int idCliente)

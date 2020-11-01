@@ -83,9 +83,10 @@ namespace NLayer.Formularios
 
         private void button3_Click(object sender, EventArgs e)
         {
+            Cuenta cuenta = (Cuenta)listBox1.SelectedItem;
             int saldo = Convert.ToInt32(textBox3.Text);
-            int idcliente = Convert.ToInt32(textBox1.Text);
-            cuentaServ.ModificarSaldo(saldo,idcliente);
+            int idcuenta = Convert.ToInt32(cuenta.Id);
+            cuentaServ.ModificarSaldo(saldo, idcuenta);
             CargarLista();
         }
 
@@ -94,7 +95,7 @@ namespace NLayer.Formularios
             textBox1.Enabled = true;
             textBox3.Enabled = true;
             Cuenta cuenta = (Cuenta)listBox1.SelectedItem;
-            textBox1.Text = cuenta.Id.ToString();
+            textBox1.Text = cuenta.IdCliente.ToString();
             comboBox2.DataSource = cuenta.Descripcion.ToList();
             textBox3.Text = cuenta.Saldo.ToString();
         }

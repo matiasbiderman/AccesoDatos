@@ -40,12 +40,6 @@ namespace NLayer.Formularios
             Cliente cliente = (Cliente)comboBox1.SelectedItem;
             textBox1.Text = cliente.Id.ToString();
         }
-       /* private void CargaFormulario()
-        {
-            Cliente cliente = (Cliente)comboBox1.SelectedItem;
-            string desc  = comboBox2.SelectedItem.ToString();
-            textBox1.Text = cliente.Id.ToString();
-        }*/
         private void FrmAbrirCuenta_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Owner.Show();
@@ -68,7 +62,8 @@ namespace NLayer.Formularios
                 cuentaServ.IngresarCuenta(cuenta);
                 MessageBox.Show("Cuenta agregada");
                 listBox1.DataSource = null;
-                listBox1.DataSource = cuentaServ.Traer(cliente.Id);
+                listBox1.DataSource = cuentaServ.TraerCuentas();
+                textBox1.Text = string.Empty;
             }
             catch(Exception exce)
             {
@@ -80,6 +75,11 @@ namespace NLayer.Formularios
         {
 
             string desc = comboBox2.SelectedItem.ToString();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

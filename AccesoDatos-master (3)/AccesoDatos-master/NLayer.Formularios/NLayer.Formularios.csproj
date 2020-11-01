@@ -76,12 +76,6 @@
     <Compile Include="FrmListaClientes.Designer.cs">
       <DependentUpon>FrmListaClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmListarCuentas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmListarCuentas.Designer.cs">
-      <DependentUpon>FrmListarCuentas.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

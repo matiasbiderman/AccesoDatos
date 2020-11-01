@@ -15,10 +15,12 @@ namespace NLayer.Formularios
     public partial class FrmAgregarCliente : Form
     {
         private ClienteServicio _clienteServicio;
+        private CuentaServicio _cuentaServicio;
         public FrmAgregarCliente()
         {
             InitializeComponent();
             _clienteServicio = new ClienteServicio();
+            _cuentaServicio = new CuentaServicio();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -47,6 +49,11 @@ namespace NLayer.Formularios
         private void FrmAgregarCliente_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+          
         }
     }
 }

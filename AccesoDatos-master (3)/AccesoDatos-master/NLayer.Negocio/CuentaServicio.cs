@@ -44,6 +44,19 @@ namespace NLayer.Negocio
                 throw new CuentaExistenteException(cuenta.Id);
             }
         }
+        public void ModificarSaldo(int saldo, int idcliente)
+        {
+            if (saldo > 0)
+            {
+                
+                Traer(idcliente).Saldo = saldo;
+
+            }
+            else
+            {
+                throw new Exception("el saldo es negativo");
+            }
+        }
 
         /*public Cuenta AbrirCuenta(string descripcion, int idCliente)
         {

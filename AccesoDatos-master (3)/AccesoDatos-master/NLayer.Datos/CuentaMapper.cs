@@ -32,6 +32,16 @@ namespace NLayer.Datos
             //devuelve el json deserializado
             return JsonConvert.DeserializeObject<List<Cuenta>>(json);
         }
+        public TransactionResult Update(Cuenta cuenta)
+        {
+            NameValueCollection obj = ReverseMap(cuenta);
+
+            string result = WebHelper.Post("/api/v1/cuenta", obj);
+
+            TransactionResult resultadoTransaccion = MapResultado(result);
+
+            return resultadoTransaccion;
+        }
 
         public TransactionResult Insert(Cuenta cuenta)
         {

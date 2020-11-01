@@ -25,7 +25,8 @@ namespace NLayer.Formularios
 
         private void FrmAbrirCuenta_Load(object sender, EventArgs e)
         {
-            textBox1.Enabled =  true;
+            textBox1.Enabled =  false;
+            textBox3.Enabled = false;
             comboBox1.DataSource = null;
             comboBox1.DataSource = clienteServ.TraerClientes();
             //comboBox2.DataSource = null;
@@ -61,8 +62,7 @@ namespace NLayer.Formularios
                 Cuenta cuenta = new Cuenta(cuentaServ.ProximoIdCuenta(), desc, cliente.Id);
                 cuentaServ.IngresarCuenta(cuenta);
                 MessageBox.Show("Cuenta agregada");
-                listBox1.DataSource = null;
-                listBox1.DataSource = cuentaServ.TraerCuentas();
+                CargarLista();
                 textBox1.Text = string.Empty;
             }
             catch(Exception exce)
@@ -70,16 +70,33 @@ namespace NLayer.Formularios
                 MessageBox.Show(exce.Message);
             }
         }
+        private void CargarLista()
+        {
+            listBox1.DataSource = null;
+            listBox1.DataSource = cuentaServ.TraerCuentas();
+        }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            string desc = comboBox2.SelectedItem.ToString();
+            string desc = comboBox2.SelectedItem.ToString(); 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            int saldo = Convert.ToInt32(textBox3.Text);
+            int idcliente = Convert.ToInt32(textBox1.Text);
+            cuentaServ.ModificarSaldo(saldo,idcliente);
+            CargarLista();
+        }
 
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox1.Enabled = true;
+            textBox3.Enabled = true;
+            Cuenta cuenta = (Cuenta)listBox1.SelectedItem;
+            textBox1.Text = cuenta.Id.ToString();
+            comboBox2.DataSource = cuenta.Descripcion.ToList();
+            textBox3.Text = cuenta.Saldo.ToString();
         }
     }
 }

@@ -34,6 +34,7 @@ namespace NLayer.Datos
 
             return responseString;
         }
+       
 
         public static string Post(string url, NameValueCollection parametros)
         {

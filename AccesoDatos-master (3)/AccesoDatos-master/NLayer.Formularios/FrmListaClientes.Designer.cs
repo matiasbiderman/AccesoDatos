@@ -71,6 +71,7 @@
             this.Controls.Add(this.button1);
             this.Name = "FrmListaClientes";
             this.Text = "FrmListaClientes";
+            this.Load += new System.EventHandler(this.FrmListaClientes_Load);
             this.ResumeLayout(false);
 
         }

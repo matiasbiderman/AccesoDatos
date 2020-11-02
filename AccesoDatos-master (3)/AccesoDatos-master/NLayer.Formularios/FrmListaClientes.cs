@@ -36,5 +36,10 @@ namespace NLayer.Formularios
 
             listBox1.DataSource = lst;
         }
+
+        private void FrmListaClientes_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

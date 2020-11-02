@@ -34,7 +34,7 @@ namespace NLayer.Datos
         }
         public TransactionResult Update(Cuenta cuenta)
         {
-            NameValueCollection obj = ReverseMap(cuenta);
+            NameValueCollection obj = ReverseMap(cuenta, "update");
 
             string result = WebHelper.Post("/cuenta", obj);
 
@@ -45,27 +45,31 @@ namespace NLayer.Datos
 
         public TransactionResult Insert(Cuenta cuenta)
         {
-            NameValueCollection obj = ReverseMap(cuenta);
+            NameValueCollection obj = ReverseMap(cuenta, "insert");
             string result = WebHelper.Post("/cuenta", obj);
             return MapResultado(result);
             //devuelve el resultado de la transaccion
         }
 
-        private NameValueCollection ReverseMap(Cuenta cuenta)
+        private NameValueCollection ReverseMap(Cuenta cuenta, string tipo)
         {
-            //esto hay que hacerlo en orden? mapeo solo los datos que me interesan?
+
             NameValueCollection n = new NameValueCollection();
-            n.Add("NroCuenta", cuenta.NroCuenta.ToString());
-            n.Add("Descripcion", cuenta.Descripcion);
-            n.Add("Saldo", cuenta.Saldo.ToString());
-            //n.Add("FechaApertura", cuenta.FechaApertura.ToShortDateString()); // DateTime
-            //n.Add("FechaModificacion", cuenta.FechaModificacion.ToShortDateString()); // DateTime
-            n.Add("Activo", cuenta.Activo.ToString()); // bool
-            n.Add("idCliente", cuenta.IdCliente.ToString()); // STRING
-            //n.Add("id", cuenta.Id.ToString()); // INT
+
+            if (tipo == "insert")
+            {
+                n.Add("idCliente", cuenta.IdCliente.ToString());
+                n.Add("Descripcion", cuenta.Descripcion);
+            }
+            else if (tipo == "update")
+            {
+                n.Add("id", cuenta.Id.ToString());
+                n.Add("Saldo", cuenta.Saldo.ToString());
+            }
+
             return n;
         }
-
+        
         private TransactionResult MapResultado(string json)
         {
             return JsonConvert.DeserializeObject<TransactionResult>(json);

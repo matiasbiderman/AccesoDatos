@@ -26,7 +26,7 @@ namespace NLayer.Formularios
         private void FrmAbrirCuenta_Load(object sender, EventArgs e)
         {
             textBox1.Enabled =  false;
-            textBox3.Enabled = false;
+           textBox3.Enabled = false;
             comboBox1.DataSource = null;
             comboBox1.DataSource = clienteServ.TraerClientes();
             //comboBox2.DataSource = null;

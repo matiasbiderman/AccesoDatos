@@ -58,7 +58,7 @@ namespace NLayer.Entidades
         }
         public override string ToString()
         {
-            return string.Format("Id{0},$Monto{1},TNA{2}%, Linea{3}, $Cuota{4} Plazo{5}", this._id,this.Monto, this.Tna, this.Linea, this._cuota, this.Plazo/*, this._usuario*/);
+            return string.Format("Monto ${0},TNA{1}%,{2}, Cuota${3} por {4} dias",this.Monto, this.Tna, this.Linea, this._cuota, this.Plazo/*, this._usuario*/);
         }
     }
 }

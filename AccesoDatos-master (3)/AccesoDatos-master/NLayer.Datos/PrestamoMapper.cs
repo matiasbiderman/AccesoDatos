@@ -14,7 +14,7 @@ namespace NLayer.Datos
     {
         public List<Prestamo> TraerTodos()
         {
-            string json2 = WebHelper.Get("/api/v1/prestamo/90"); // trae un texto en formato json de una web
+            string json2 = WebHelper.Get("/api/v1/prestamo/891830"); // trae un texto en formato json de una web
             List<Prestamo> resultado = MapList(json2);
             return resultado;
         }

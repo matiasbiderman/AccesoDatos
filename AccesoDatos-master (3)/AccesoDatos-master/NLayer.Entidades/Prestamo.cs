@@ -14,7 +14,7 @@ namespace NLayer.Entidades
         private string _linea;
         private double _tna;
         private double _monto;
-        private string _usuario;
+       // private string _usuario;
         private double _cuota;
         private int _id;
         private int _plazo;
@@ -30,20 +30,20 @@ namespace NLayer.Entidades
            // _usuario = "891830";
         }
 
-        [DataMember]
+        [DataMember(Name = "id")]
         public int Id { get => _id; set => _id = value; }
-        [DataMember]
+        [DataMember(Name = "tna")]
         public double Tna { get => _tna; set => _tna = value; }
-        [DataMember]
+        [DataMember(Name = "cuota")]
         public double Cuota { get => CuotaTotal(); set => _cuota = value; }
         [DataMember(Name = "linea")]
         public string Linea { get => _linea; set => _linea = value; }
-        [DataMember]
+        [DataMember(Name = "plazo")]
         public int Plazo { get => _plazo; set => _plazo = value; }
-        [DataMember]
+        [DataMember(Name = "monto")]
         public double Monto { get => _monto; set => _monto = value; }
-        [DataMember]
-        public string Usuario { get => _usuario; set => _usuario = value; }
+        /*[DataMember]
+        public string Usuario { get => _usuario; set => _usuario = value; }*/
         public double CuotaCapital()
         {
             return this._monto/this._plazo;

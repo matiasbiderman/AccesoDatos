@@ -40,5 +40,13 @@ namespace NLayer.Formularios
             forumulario.Show();
             this.Hide();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FrmPrestamo forumulario = new FrmPrestamo();
+            forumulario.Owner = this;
+            forumulario.Show();
+            this.Hide();
+        }
     }
 }

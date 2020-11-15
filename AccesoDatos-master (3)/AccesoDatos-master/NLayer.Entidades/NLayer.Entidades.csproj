@@ -45,7 +45,10 @@
     <Compile Include="Cliente.cs" />
     <Compile Include="Cuenta.cs" />
     <Compile Include="CuentaExistenteException.cs" />
+    <Compile Include="Operador.cs" />
+    <Compile Include="Prestamo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoPrestamo.cs" />
     <Compile Include="TransactionResult.cs" />
   </ItemGroup>
   <ItemGroup>

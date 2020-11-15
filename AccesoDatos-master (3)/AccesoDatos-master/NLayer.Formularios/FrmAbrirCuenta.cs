@@ -99,5 +99,10 @@ namespace NLayer.Formularios
             comboBox2.DataSource = cuenta.Descripcion.ToList();
             textBox3.Text = cuenta.Saldo.ToString();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

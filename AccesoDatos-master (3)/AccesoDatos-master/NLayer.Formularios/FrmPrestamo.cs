@@ -43,14 +43,24 @@ namespace NLayer.Formularios
 
         private void btnAlta_Click(object sender, EventArgs e)
         {
-            /* _prestamoServicio.AgregarPrestamo(prestamo);
-             MessageBox.Show("Prestamo ingresado correctamente.");*/
+            try
+            {
+                Prestamo prestamo = CargaPrestamo();
+                _prestamoServicio.AgregarPrestamo(prestamo);
+                MessageBox.Show("Prestamo ingresado correctamente.");
+                lstPrestamos.DataSource = null;
+                lstPrestamos.DataSource = _prestamoServicio.TraerPrestamos();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
 
         }
         private Prestamo CargaPrestamo()
         {
-
-            Prestamo prestamo = new Prestamo(_prestamoServicio.ProximoId(), double.Parse(txttna.Text), txtlinea.Text, int.Parse(txtplazo.Text), double.Parse(txtmonto.Text));
+            Prestamo prestamo = new Prestamo(_prestamoServicio.ProximoId(), double.Parse(txttna.Text), txtlinea.Text, int.Parse(txtplazo.Text), double.Parse(txtmonto.Text), double.Parse(txtcuotatot.Text));
             return prestamo;
         }
 
@@ -62,8 +72,6 @@ namespace NLayer.Formularios
                 txtcuotaint.Text = (double.Parse(txtcuotacap.Text) * (double.Parse(txttna.Text) / 12 / 100)).ToString();
                 txtcuotatot.Text = (double.Parse(txtcuotacap.Text) + double.Parse(txtcuotaint.Text)).ToString();
                 //TipoPrestamo tipoPrestamo = (TipoPrestamo)lstTipoPrestamos.SelectedItem;
-                
-                
 
             }
             catch (Exception ex)

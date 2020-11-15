@@ -14,14 +14,14 @@ namespace NLayer.Datos
     {
         public List<Prestamo> TraerTodos()
         {
-            string json2 = WebHelper.Get("/api/v1/prestamos"); // trae un texto en formato json de una web
+            string json2 = WebHelper.Get("/api/v1/prestamo/90"); // trae un texto en formato json de una web
             List<Prestamo> resultado = MapList(json2);
             return resultado;
         }
         public TransactionResult Insert(Prestamo prestamo)
         {
             NameValueCollection obj = ReverseMap(prestamo);
-            string result = WebHelper.Post("/api/v1/prestamos", obj);
+            string result = WebHelper.Post("/api/v1/prestamo", obj);
             TransactionResult resultadoTransaccion = MapResultado(result);
             return resultadoTransaccion;
         }
@@ -31,11 +31,11 @@ namespace NLayer.Datos
             NameValueCollection n = new NameValueCollection();
             n.Add("id", prestamo.Id.ToString());
             n.Add("tna", prestamo.Tna.ToString());
-            n.Add("linea", prestamo.Linea.ToString());
+            n.Add("linea", prestamo.Linea);
             n.Add("plazo", prestamo.Plazo.ToString());
             n.Add("monto", prestamo.Monto.ToString());
-            //n.Add("cuota", prestamo.Cuota.ToString());
-            n.Add("Usuario", ConfigurationManager.AppSettings["Legajo"]);
+            n.Add("cuota", prestamo.Cuota.ToString());
+            n.Add("usuario", ConfigurationManager.AppSettings["Legajo"]);
             return n;
 
         }
